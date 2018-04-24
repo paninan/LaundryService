@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtCusId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCusname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCusPhone = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtCusAddress = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -59,14 +59,14 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "รหัสลูกค้า";
             // 
-            // txtUsername
+            // txtCusId
             // 
-            this.txtUsername.BackColor = System.Drawing.SystemColors.Window;
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtUsername.Location = new System.Drawing.Point(185, 89);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(212, 23);
-            this.txtUsername.TabIndex = 11;
+            this.txtCusId.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCusId.Location = new System.Drawing.Point(185, 89);
+            this.txtCusId.Name = "txtCusId";
+            this.txtCusId.Size = new System.Drawing.Size(212, 23);
+            this.txtCusId.TabIndex = 11;
             // 
             // label2
             // 
@@ -79,14 +79,14 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "ชื่อ";
             // 
-            // textBox1
+            // txtCusname
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.textBox1.Location = new System.Drawing.Point(185, 140);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 23);
-            this.textBox1.TabIndex = 13;
+            this.txtCusname.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCusname.Location = new System.Drawing.Point(185, 140);
+            this.txtCusname.Name = "txtCusname";
+            this.txtCusname.Size = new System.Drawing.Size(212, 23);
+            this.txtCusname.TabIndex = 13;
             // 
             // label3
             // 
@@ -99,14 +99,14 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "เบอร์โทร";
             // 
-            // textBox2
+            // txtCusPhone
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.textBox2.Location = new System.Drawing.Point(185, 192);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(212, 23);
-            this.textBox2.TabIndex = 15;
+            this.txtCusPhone.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCusPhone.Location = new System.Drawing.Point(185, 192);
+            this.txtCusPhone.Name = "txtCusPhone";
+            this.txtCusPhone.Size = new System.Drawing.Size(212, 23);
+            this.txtCusPhone.TabIndex = 15;
             // 
             // label4
             // 
@@ -119,15 +119,15 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "ที่อยู่";
             // 
-            // textBox3
+            // txtCusAddress
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.textBox3.Location = new System.Drawing.Point(185, 246);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(212, 58);
-            this.textBox3.TabIndex = 17;
+            this.txtCusAddress.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCusAddress.Location = new System.Drawing.Point(185, 246);
+            this.txtCusAddress.Multiline = true;
+            this.txtCusAddress.Name = "txtCusAddress";
+            this.txtCusAddress.Size = new System.Drawing.Size(212, 58);
+            this.txtCusAddress.TabIndex = 17;
             // 
             // label5
             // 
@@ -218,18 +218,19 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtCusAddress);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtCusPhone);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCusname);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtCusId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCusInfo";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "ข้อมูลลูกค้า";
+            this.Load += new System.EventHandler(this.frmCusInfo_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGPackCus)).EndInit();
             this.ResumeLayout(false);
@@ -240,13 +241,13 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtCusId;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCusname;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCusPhone;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtCusAddress;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

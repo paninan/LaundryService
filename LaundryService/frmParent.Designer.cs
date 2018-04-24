@@ -33,8 +33,11 @@
             this.promotionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.รายการคงคางToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ออกจากรายการToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -43,7 +46,8 @@
             this.customerInformationToolStripMenuItem,
             this.promotionToolStripMenuItem,
             this.orderToolStripMenuItem,
-            this.รายการคงคางToolStripMenuItem});
+            this.รายการคงคางToolStripMenuItem,
+            this.ออกจากรายการToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(599, 24);
@@ -78,13 +82,29 @@
             this.รายการคงคางToolStripMenuItem.Text = "รายการคงค้าง";
             this.รายการคงคางToolStripMenuItem.Click += new System.EventHandler(this.รายการคงคางToolStripMenuItem_Click);
             // 
+            // ออกจากรายการToolStripMenuItem
+            // 
+            this.ออกจากรายการToolStripMenuItem.Name = "ออกจากรายการToolStripMenuItem";
+            this.ออกจากรายการToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.ออกจากรายการToolStripMenuItem.Text = "ออกจากรายการ";
+            this.ออกจากรายการToolStripMenuItem.Click += new System.EventHandler(this.ออกจากรายการToolStripMenuItem_Click);
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 600);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(313, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 0;
             // 
             // frmParent
             // 
@@ -96,10 +116,12 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmParent";
-            this.Text = "frmParent";
+            this.Text = "frmparent";
             this.Load += new System.EventHandler(this.frmParent_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +135,7 @@
         private System.Windows.Forms.ToolStripMenuItem orderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem รายการคงคางToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem ออกจากรายการToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }

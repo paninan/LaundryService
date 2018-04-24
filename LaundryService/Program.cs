@@ -7,7 +7,9 @@ using System.Windows.Forms;
 namespace LaundryService
 {
     static class Program
+
     {
+        public static Int32 ACTIVE_CUSTOMER_ID = 0;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +18,7 @@ namespace LaundryService
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmMain());
         }
     }
 }

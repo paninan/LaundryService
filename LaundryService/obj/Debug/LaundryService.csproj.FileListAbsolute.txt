@@ -41,7 +41,6 @@ F:\LaundryService\LaundryService\obj\Debug\LaundryService.csproj.GenerateResourc
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\bin\Debug\LaundryService.exe
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\bin\Debug\LaundryService.pdb
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.csprojResolveAssemblyReference.cache
-\\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.Form1.resources
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmCusInfo.resources
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmMain.resources
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmOrder.resources
@@ -72,3 +71,4 @@ C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.csproj.Gener
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.exe
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.pdb
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmLogin.resources
+\\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmLogin.resources

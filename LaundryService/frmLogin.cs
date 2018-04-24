@@ -20,26 +20,42 @@ namespace LaundryService
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = LaundryServiceConn.GetConnection();
-            SqlCommand scmd = new SqlCommand("select count (*) as cnt from [laundryService].[dbo].[user]  where [USERNAME]=@usr and [PASSWORD]=@pwd", conn);
-            scmd.Parameters.Clear();
-            scmd.Parameters.AddWithValue("@usr", txtUsername.Text);
-            scmd.Parameters.AddWithValue("@pwd", txtPassword.Text);
-            conn.Open();
-            if (scmd.ExecuteScalar().ToString() == "1")
+            if (String.IsNullOrEmpty(txtUsername.Text) || txtUsername.Text == "Username")
             {
-                MessageBox.Show("Login Success");
-                frmMain frm = new frmMain();
-                frm.Show();
-                this.Hide();
+                MessageBox.Show("Enter Username ,please.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+
             }
-            else
+            if (String.IsNullOrEmpty(txtPassword.Text) || txtPassword.Text == "Password")
             {
-                txtUsername.Clear();
-                txtPassword.Clear();
+                MessageBox.Show("Enter password ,please.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            conn.Close();
-           
+            
+                SqlConnection conn = LaundryServiceConn.GetConnection();
+                SqlCommand scmd = new SqlCommand("select count (*) as cnt from [laundryService].[dbo].[user]  where [USERNAME]=@usr and [PASSWORD]=@pwd", conn);
+                scmd.Parameters.Clear();
+                scmd.Parameters.AddWithValue("@usr", txtUsername.Text);
+                scmd.Parameters.AddWithValue("@pwd", txtPassword.Text);
+                conn.Open();
+                if (scmd.ExecuteScalar().ToString() == "1")
+                {
+                    MessageBox.Show("Login Success.");
+                    frmMain frm = new frmMain();
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Login fail.");
+                    txtUsername.Clear();
+                    txtPassword.Clear();
+                }
+                conn.Close();
+            
+            
+
+
         }
     }
 }
