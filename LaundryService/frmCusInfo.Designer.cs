@@ -62,6 +62,7 @@
             // txtCusId
             // 
             this.txtCusId.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusId.Enabled = false;
             this.txtCusId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusId.Location = new System.Drawing.Point(185, 89);
             this.txtCusId.Name = "txtCusId";
@@ -82,6 +83,7 @@
             // txtCusname
             // 
             this.txtCusname.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusname.Enabled = false;
             this.txtCusname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusname.Location = new System.Drawing.Point(185, 140);
             this.txtCusname.Name = "txtCusname";
@@ -102,6 +104,7 @@
             // txtCusPhone
             // 
             this.txtCusPhone.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusPhone.Enabled = false;
             this.txtCusPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusPhone.Location = new System.Drawing.Point(185, 192);
             this.txtCusPhone.Name = "txtCusPhone";
@@ -122,6 +125,7 @@
             // txtCusAddress
             // 
             this.txtCusAddress.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCusAddress.Enabled = false;
             this.txtCusAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusAddress.Location = new System.Drawing.Point(185, 246);
             this.txtCusAddress.Multiline = true;
@@ -148,6 +152,7 @@
             this.button1.TabIndex = 20;
             this.button1.Text = "แก้ไข";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -157,6 +162,7 @@
             this.button2.TabIndex = 21;
             this.button2.Text = "ยกเลิก";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -166,6 +172,7 @@
             this.button3.TabIndex = 22;
             this.button3.Text = "บันทึก";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 

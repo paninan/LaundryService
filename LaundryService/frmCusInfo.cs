@@ -43,91 +43,51 @@ namespace LaundryService
             
 
         }
-        private void add()
+
+
+        private void update()
         {
-            // connect database & Add data
-            
+           
                 SqlConnection conn = LaundryServiceConn.GetConnection();
-                SqlCommand scmd = new SqlCommand("INSERT INTO customer ([CUS_ID],[CUS_NAME],[CUS_PHONE]),[CUS_ADDRESS]) VALUES ( @cusId ,@cusName ,@cusPhone,@cusAddress )", conn);
+                SqlCommand scmd = new SqlCommand("UPDATE customer SET  [CUS_NAME] =@cusName ,[CUS_PHONE] = @cusPhone,[CUS_ADDRESS] = @cusAddress WHERE [CUS_ID]= @cusId", conn);
                 conn.Open();
 
-                scmd.Parameters.AddWithValue("@cusId", txtCusId.Text);
+
                 scmd.Parameters.AddWithValue("@cusName", txtCusname.Text);
                 scmd.Parameters.AddWithValue("@cusPhone", txtCusPhone.Text);
                 scmd.Parameters.AddWithValue("@cusAddress", txtCusAddress.Text);
-                
-                scmd.ExecuteNonQuery();
-                MessageBox.Show("Saved successed");
-                
-           
+            scmd.Parameters.AddWithValue("@cusId", txtCusId.Text);
+
+            scmd.ExecuteNonQuery();
                 conn.Close();
-          
+                MessageBox.Show("Update successed");
+            
         }
 
-        //private void update()
-        //{
-        //    // connect database & Add data
-        //    try
-        //    {
-        //        conn = new OleDbConnection(System.Configuration.ConfigurationManager.ConnectionStrings["General_Journal.Properties.Settings.General_JournalConnectionString"].ConnectionString);
+        private void button3_Click(object sender, EventArgs e)
+        {
+            update();
+            txtCusname.Enabled = false;
+            txtCusPhone.Enabled = false;
+            txtCusAddress.Enabled = false;
+        }
 
-        //        string cmdText = "UPDATE accountNo SET [ACC_NAME] = @accName, [ACC_CATEGORY] = @accCat WHERE [ACC_NO] = @accNo";
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            txtCusname.Enabled = true;
+            txtCusPhone.Enabled = true;
+            txtCusAddress.Enabled = true;
+           
+            
+        }
 
-        //        using (OleDbCommand cmd = new OleDbCommand(cmdText, conn))
-        //        {
-        //            conn.Open();
-        //            cmd.Parameters.AddWithValue("@accName", txtAccName.Text);
-        //            cmd.Parameters.AddWithValue("@accCat", cmbCategory.Text);
-        //            cmd.Parameters.AddWithValue("@accNo", txtAccNo.Text);
-
-        //            cmd.ExecuteNonQuery();
-        //            MessageBox.Show("Update successed");
-        //        }
-
-
-        //    }
-        //    catch (Exception Ex)
-        //    {
-        //        MessageBox.Show(Ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-
-        //    btnAdd.Text = "Add";
-
-
-        //}
-        //private void delete()
-        //{
-        //    // connect database & Add data
-        //    try
-        //    {
-        //        String accNo = dataGAccNo[0, dataGAccNo.CurrentCell.RowIndex].Value.ToString();
-        //        conn = new OleDbConnection(System.Configuration.ConfigurationManager.ConnectionStrings["General_Journal.Properties.Settings.General_JournalConnectionString"].ConnectionString);
-
-        //        string cmdText = "DELETE FROM accountNo  WHERE [ACC_NO] = @accNo";
-
-        //        using (OleDbCommand cmd = new OleDbCommand(cmdText, conn))
-        //        {
-        //            conn.Open();
-        //            cmd.Parameters.AddWithValue("@accNo", accNo);
-
-        //            cmd.ExecuteNonQuery();
-        //            MessageBox.Show("Delete successed");
-        //        }
-
-
-        //    }
-        //    catch (Exception Ex)
-        //    {
-        //        MessageBox.Show(Ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conn.Close();
-        //    }
-        //}
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+            txtCusname.Enabled = false;
+            txtCusPhone.Enabled = false;
+            txtCusAddress.Enabled = false;
+        }
     }
 }
