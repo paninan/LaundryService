@@ -37,13 +37,45 @@ namespace LaundryService
                 txtCusname.Text = reader["CUS_NAME"].ToString();
                 txtCusPhone.Text = reader["CUS_PHONE"].ToString();
                 txtCusAddress.Text = reader["CUS_ADDRESS"].ToString();
-
             }
             conn.Close();
-            
+            showDataGrid();
+
 
         }
 
+        // show data on data grid
+        private void showDataGrid()
+        {
+            SqlConnection conn = LaundryServiceConn.GetConnection();
+            SqlDataReader sqlRead = null;
+            SqlCommand scmd = new SqlCommand(                
+                " SELECT a.[PROMO_ID]" +
+                " , a.[PROMO_NAME]" +
+                " , a.[PROMO_DISCRIPTION]" +
+                " , a.[PROMO_PRICE]" +
+                " , a.[PROMO_QTY]" +
+                " , a.[CL_ID]" +
+                " , b.BALANCE" +
+                " FROM[dbo].[promotion] a" +
+                " RIGHT JOIN[dbo].[promotionCondition] b ON a.[PROMO_ID] = b.PROMO_ID" +
+                " where b.CUS_ID = @cusId", conn);
+            scmd.Parameters.Clear();
+            scmd.Parameters.AddWithValue("@cusId", cusID);
+            conn.Open();
+            sqlRead = scmd.ExecuteReader();
+            dataGPackCus.ReadOnly = true;            
+            while (sqlRead.Read())
+            {
+                dataGPackCus.Rows.Add(
+                    sqlRead["PROMO_NAME"].ToString(),
+                    sqlRead["BALANCE"].ToString()
+                    );
+            }
+            conn.Close();
+
+
+        }
 
         private void update()
         {
