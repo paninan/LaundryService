@@ -55,7 +55,7 @@ namespace LaundryService
         {
 
             panel1.Controls.Clear();
-            frmPackage frm = new frmPackage();
+            frmPackage frm = new frmPackage(cusID);
             frm.TopLevel = false;
             panel1.Controls.Add(frm);
             frm.Show();
