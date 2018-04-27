@@ -47,17 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddClothes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddClothes.Designer.cs">
+      <DependentUpon>frmAddClothes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddPack.cs">
+    <Compile Include="frmManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddPack.Designer.cs">
-      <DependentUpon>frmAddPack.cs</DependentUpon>
+    <Compile Include="frmManage.Designer.cs">
+      <DependentUpon>frmManage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCusInfo.cs">
       <SubType>Form</SubType>
@@ -95,20 +101,35 @@
     <Compile Include="frmParent.Designer.cs">
       <DependentUpon>frmParent.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddPromotion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddPromotion.Designer.cs">
+      <DependentUpon>frmAddPromotion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRemain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRemain.Designer.cs">
       <DependentUpon>frmRemain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddType.Designer.cs">
+      <DependentUpon>frmAddType.cs</DependentUpon>
+    </Compile>
     <Compile Include="LaundryServiceConn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddClothes.resx">
+      <DependentUpon>frmAddClothes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddPack.resx">
-      <DependentUpon>frmAddPack.cs</DependentUpon>
+    <EmbeddedResource Include="frmManage.resx">
+      <DependentUpon>frmManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCusInfo.resx">
       <DependentUpon>frmCusInfo.cs</DependentUpon>
@@ -128,8 +149,14 @@
     <EmbeddedResource Include="frmParent.resx">
       <DependentUpon>frmParent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddPromotion.resx">
+      <DependentUpon>frmAddPromotion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRemain.resx">
       <DependentUpon>frmRemain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddType.resx">
+      <DependentUpon>frmAddType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

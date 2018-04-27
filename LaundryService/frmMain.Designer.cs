@@ -60,7 +60,7 @@
             // 
             this.btnNewCus.Location = new System.Drawing.Point(153, 194);
             this.btnNewCus.Name = "btnNewCus";
-            this.btnNewCus.Size = new System.Drawing.Size(138, 23);
+            this.btnNewCus.Size = new System.Drawing.Size(175, 44);
             this.btnNewCus.TabIndex = 10;
             this.btnNewCus.Text = "ลูกค้าใหม่";
             this.btnNewCus.UseVisualStyleBackColor = true;
@@ -78,17 +78,17 @@
             // 
             // btnPackage
             // 
-            this.btnPackage.Location = new System.Drawing.Point(314, 194);
+            this.btnPackage.Location = new System.Drawing.Point(153, 256);
             this.btnPackage.Name = "btnPackage";
-            this.btnPackage.Size = new System.Drawing.Size(138, 23);
+            this.btnPackage.Size = new System.Drawing.Size(175, 42);
             this.btnPackage.TabIndex = 12;
-            this.btnPackage.Text = "จัดการแพคเกจ";
+            this.btnPackage.Text = "จัดการ";
             this.btnPackage.UseVisualStyleBackColor = true;
             this.btnPackage.Click += new System.EventHandler(this.btnPackage_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(153, 235);
+            this.button1.Location = new System.Drawing.Point(190, 354);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 13;
@@ -108,6 +108,7 @@
             this.Controls.Add(this.txtCustomer);
             this.Name = "frmMain";
             this.Text = "frmMain";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

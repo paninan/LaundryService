@@ -95,9 +95,14 @@ namespace LaundryService
 
         private void btnPackage_Click(object sender, EventArgs e)
         {
-            frmAddPack frm = new frmAddPack();
+            frmManage frm = new frmManage();
             frm.Show();
             this.Hide();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -53,7 +53,6 @@ F:\LaundryService\LaundryService\obj\Debug\LaundryService.csproj.GenerateResourc
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.exe
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.pdb
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmNewCus.resources
-\\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddPack.resources
 C:\Repo\Waan\LaundryService\LaundryService\bin\Debug\LaundryService.exe.config
 C:\Repo\Waan\LaundryService\LaundryService\bin\Debug\LaundryService.exe
 C:\Repo\Waan\LaundryService\LaundryService\bin\Debug\LaundryService.pdb
@@ -90,3 +89,7 @@ C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmLogin.res
 \\Mac\Home\Desktop\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.csproj.CoreCompileInputs.cache
 \\Mac\Home\Desktop\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.exe
 \\Mac\Home\Desktop\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.pdb
+\\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddClothes.resources
+\\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmManage.resources
+\\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddPromotion.resources
+\\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddType.resources

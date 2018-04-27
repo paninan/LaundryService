@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
             this.orderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +37,7 @@
             this.dateSend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.back = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pay = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,9 +57,56 @@
             this.pay});
             this.dataGridView1.Location = new System.Drawing.Point(2, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(614, 205);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // orderID
+            // 
+            this.orderID.HeaderText = "รหัสออเดอร์";
+            this.orderID.Name = "orderID";
+            this.orderID.Width = 80;
+            // 
+            // orderName
+            // 
+            this.orderName.HeaderText = "ชื่อรายการ";
+            this.orderName.Name = "orderName";
+            this.orderName.Width = 150;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "จำนวน";
+            this.qty.Name = "qty";
+            this.qty.Width = 50;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "ราคา";
+            this.price.Name = "price";
+            this.price.Width = 50;
+            // 
+            // dateReceive
+            // 
+            this.dateReceive.HeaderText = "วันรับ";
+            this.dateReceive.Name = "dateReceive";
+            this.dateReceive.Width = 70;
+            // 
+            // dateSend
+            // 
+            this.dateSend.HeaderText = "วันส่ง";
+            this.dateSend.Name = "dateSend";
+            this.dateSend.Width = 70;
+            // 
+            // back
+            // 
+            this.back.HeaderText = "คืนผ้า";
+            this.back.Name = "back";
+            this.back.Width = 50;
+            // 
+            // pay
+            // 
+            this.pay.HeaderText = "จ่ายแล้ว";
+            this.pay.Name = "pay";
+            this.pay.Width = 50;
             // 
             // btnSave
             // 
@@ -69,62 +116,6 @@
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "บันทึก";
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // orderID
-            // 
-            this.orderID.HeaderText = "รหัสออเดอร์";
-            this.orderID.Name = "orderID";
-            this.orderID.ReadOnly = true;
-            this.orderID.Width = 80;
-            // 
-            // orderName
-            // 
-            this.orderName.HeaderText = "ชื่อรายการ";
-            this.orderName.Name = "orderName";
-            this.orderName.ReadOnly = true;
-            this.orderName.Width = 150;
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "จำนวน";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            this.qty.Width = 50;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "ราคา";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            this.price.Width = 50;
-            // 
-            // dateReceive
-            // 
-            this.dateReceive.HeaderText = "วันรับ";
-            this.dateReceive.Name = "dateReceive";
-            this.dateReceive.ReadOnly = true;
-            this.dateReceive.Width = 70;
-            // 
-            // dateSend
-            // 
-            this.dateSend.HeaderText = "วันส่ง";
-            this.dateSend.Name = "dateSend";
-            this.dateSend.ReadOnly = true;
-            this.dateSend.Width = 70;
-            // 
-            // back
-            // 
-            this.back.HeaderText = "คืนผ้า";
-            this.back.Name = "back";
-            this.back.ReadOnly = true;
-            this.back.Width = 50;
-            // 
-            // pay
-            // 
-            this.pay.HeaderText = "จ่ายแล้ว";
-            this.pay.Name = "pay";
-            this.pay.ReadOnly = true;
-            this.pay.Width = 50;
             // 
             // frmRemain
             // 
