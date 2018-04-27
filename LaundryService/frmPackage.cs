@@ -64,5 +64,15 @@ namespace LaundryService
             //MessageBox.Show("1" + accNo + "2" + accName);
             dataGridView2.Rows.Add(accNo, accName);
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

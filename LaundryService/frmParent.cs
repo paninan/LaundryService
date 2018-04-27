@@ -65,7 +65,7 @@ namespace LaundryService
         private void orderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            frmOrder frm = new frmOrder();
+            frmOrder frm = new frmOrder(cusID);
             frm.TopLevel = false;
             panel1.Controls.Add(frm);
             frm.Show();

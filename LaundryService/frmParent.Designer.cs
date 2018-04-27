@@ -71,8 +71,8 @@
             // orderToolStripMenuItem
             // 
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
-            this.orderToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.orderToolStripMenuItem.Text = "ซื้อแพคเกจ";
+            this.orderToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.orderToolStripMenuItem.Text = "ออเดอร์";
             this.orderToolStripMenuItem.Click += new System.EventHandler(this.orderToolStripMenuItem_Click);
             // 
             // รายการคงคางToolStripMenuItem

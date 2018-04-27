@@ -43,9 +43,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.packageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -56,6 +53,9 @@
             this.btnReceive = new System.Windows.Forms.Button();
             this.txtReceive = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.packageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -168,6 +168,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(344, 117);
             this.dataGridView2.TabIndex = 15;
+            this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick_1);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -185,36 +186,15 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.packageName,
-            this.qty,
-            this.price});
+            this.price,
+            this.qty});
             this.dataGridView1.Location = new System.Drawing.Point(22, 325);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(444, 119);
             this.dataGridView1.TabIndex = 16;
-            // 
-            // packageName
-            // 
-            this.packageName.HeaderText = "ชื่อสินค้า";
-            this.packageName.Name = "packageName";
-            this.packageName.ReadOnly = true;
-            this.packageName.Width = 200;
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "จำนวน";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "ราคา";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
             // 
             // label5
             // 
@@ -305,6 +285,25 @@
             this.label7.TabIndex = 27;
             this.label7.Text = "รับเงิน";
             // 
+            // packageName
+            // 
+            this.packageName.HeaderText = "ชื่อสินค้า";
+            this.packageName.Name = "packageName";
+            this.packageName.ReadOnly = true;
+            this.packageName.Width = 200;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "ราคา";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "จำนวน";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            // 
             // frmOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,6 +335,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmOrder";
             this.Text = "frmOrder";
+            this.Load += new System.EventHandler(this.frmOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -360,9 +360,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn packageName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -373,5 +370,8 @@
         private System.Windows.Forms.Button btnReceive;
         private System.Windows.Forms.TextBox txtReceive;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packageName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qty;
     }
 }
