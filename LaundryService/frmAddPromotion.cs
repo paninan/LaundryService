@@ -20,6 +20,13 @@ namespace LaundryService
 
         private void frmAddPromotion_Load(object sender, EventArgs e)
         {
+            txtPromoID.Enabled = false;
+            txtPromoName.Enabled = false;
+            txtPromoDisc.Enabled = false;
+            txtPromoPrice.Enabled = false;
+            txtPromoQty.Enabled = false;
+            txtClothesID.Enabled = false;
+
             SqlConnection conn = LaundryServiceConn.GetConnection();
             SqlDataReader sqlRead = null;
             SqlCommand scmd = new SqlCommand(
@@ -58,5 +65,129 @@ namespace LaundryService
             txtClothesID.Text = clothesID;
            
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            clear();
+            
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+           // txtPromoID.Enabled = true;
+            txtPromoName.Enabled = true;
+            txtPromoDisc.Enabled = true;
+            txtPromoPrice.Enabled = true;
+            txtPromoQty.Enabled = true;
+            txtClothesID.Enabled = true;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            
+            if (txtPromoName.Text == "" ||
+                 txtPromoDisc.Text == "" ||
+                 txtPromoPrice.Text == "" ||
+                 txtPromoQty.Text == "" ||
+                 txtClothesID.Text == "")
+            {
+                MessageBox.Show("Enter all data ,please.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if(txtPromoID.Text == "")
+                {
+                    // SAVE
+                    SqlConnection conn = LaundryServiceConn.GetConnection();
+                    SqlCommand scmd = new SqlCommand("INSERT INTO promotion ([PROMO_NAME],[PROMO_DISCRIPTION],[PROMO_PRICE],[PROMO_QTY],[CL_ID] ) VALUES ( @promoName,@promoDesc,@promoPrice,@promoQty,@clothesID )", conn);
+                    conn.Open();
+
+                    scmd.Parameters.AddWithValue("@promoName", txtPromoName.Text);
+                    scmd.Parameters.AddWithValue("@promoDesc", txtPromoDisc.Text);
+                    scmd.Parameters.AddWithValue("@promoPrice", txtPromoPrice.Text);
+                    scmd.Parameters.AddWithValue("@promoQty", txtPromoQty.Text);
+                    scmd.Parameters.AddWithValue("@clothesID", txtClothesID.Text);
+
+                    scmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Insert successed");
+                    
+                }
+                else
+                {
+                    // UPDATE
+
+
+                    SqlConnection conn = LaundryServiceConn.GetConnection();
+                    SqlCommand scmd = new SqlCommand("UPDATE promotion SET  [PROMO_NAME] = @promoName ,[PROMO_DISCRIPTION]= @promoDesc ,[PROMO_PRICE] = @promoPrice ,[PROMO_QTY] = @promoQty ,[CL_ID]= @clothesID WHERE [PROMO_ID]= @promoID", conn);
+                    conn.Open();
+
+                    scmd.Parameters.AddWithValue("@promoID", txtPromoID.Text);
+                    scmd.Parameters.AddWithValue("@promoName", txtPromoName.Text);
+                    scmd.Parameters.AddWithValue("@promoDesc", txtPromoDisc.Text);
+                    scmd.Parameters.AddWithValue("@promoPrice", txtPromoPrice.Text);
+                    scmd.Parameters.AddWithValue("@promoQty", txtPromoQty.Text);
+                    scmd.Parameters.AddWithValue("@clothesID", txtClothesID.Text);
+
+                    scmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Update successed");
+                }
+                clear();
+                datagridRefresh();
+
+            }
+            
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void clear()
+        {
+            //txtPromoID.Enabled = true;
+            txtPromoName.Enabled = true;
+            txtPromoDisc.Enabled = true;
+            txtPromoPrice.Enabled = true;
+            txtPromoQty.Enabled = true;
+            txtClothesID.Enabled = true;
+
+            txtPromoID.Text = null;
+            txtPromoName.Text = null;
+            txtPromoDisc.Text = null;
+            txtPromoPrice.Text = null;
+            txtPromoQty.Text = null;
+            txtClothesID.Text = null;
+        }
+
+        private void datagridRefresh()
+        {
+
+            dataGridView1.Rows.Clear();
+
+            SqlConnection conn = LaundryServiceConn.GetConnection();
+            SqlDataReader sqlRead = null;
+            SqlCommand scmd = new SqlCommand(
+                " SELECT * FROM promotion", conn);
+            scmd.Parameters.Clear();
+            conn.Open();
+            sqlRead = scmd.ExecuteReader();
+            dataGridView1.ReadOnly = true;
+            while (sqlRead.Read())
+            {
+                dataGridView1.Rows.Add(
+                    sqlRead["PROMO_ID"].ToString(),
+                    sqlRead["PROMO_NAME"].ToString(),
+                    sqlRead["PROMO_DISCRIPTION"].ToString(),
+                    sqlRead["PROMO_PRICE"].ToString(),
+                    sqlRead["PROMO_QTY"].ToString(),
+                    sqlRead["CL_ID"].ToString()
+                    );
+            }
+            conn.Close();
+        }
+      
     }
 }

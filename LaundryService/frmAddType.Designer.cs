@@ -28,28 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.packageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTypeName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTypeID = new System.Windows.Forms.TextBox();
-            this.packageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(467, 392);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 70;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -66,23 +59,19 @@
             this.dataGridView1.TabIndex = 64;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
-            // btnUpdate
+            // packageName
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(467, 432);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 63;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.packageName.HeaderText = "รหัสประเภท";
+            this.packageName.Name = "packageName";
+            this.packageName.ReadOnly = true;
+            this.packageName.Width = 200;
             // 
-            // btnDelete
+            // qty
             // 
-            this.btnDelete.Location = new System.Drawing.Point(467, 471);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 62;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.qty.HeaderText = "ชื่อประเภท";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Width = 200;
             // 
             // label5
             // 
@@ -129,26 +118,56 @@
             // txtTypeID
             // 
             this.txtTypeID.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTypeID.Enabled = false;
             this.txtTypeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTypeID.Location = new System.Drawing.Point(176, 267);
             this.txtTypeID.Name = "txtTypeID";
             this.txtTypeID.Size = new System.Drawing.Size(212, 23);
             this.txtTypeID.TabIndex = 54;
             // 
-            // packageName
+            // btnEdit
             // 
-            this.packageName.HeaderText = "รหัสประเภท";
-            this.packageName.Name = "packageName";
-            this.packageName.ReadOnly = true;
-            this.packageName.Width = 200;
+            this.btnEdit.Location = new System.Drawing.Point(467, 395);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 77;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
-            // qty
+            // btnClear
             // 
-            this.qty.HeaderText = "ชื่อประเภท";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            this.qty.Width = 200;
+            this.btnClear.Location = new System.Drawing.Point(467, 311);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 76;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(467, 355);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 75;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(467, 435);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 74;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(467, 474);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 73;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // frmAddType
             // 
@@ -156,9 +175,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTypeName);
@@ -175,11 +196,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTypeName;
@@ -187,5 +204,10 @@
         private System.Windows.Forms.TextBox txtTypeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn packageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

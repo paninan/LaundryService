@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.txtClothesID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPromoQty = new System.Windows.Forms.TextBox();
             this.txtPromoPrice = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.packageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,23 +50,20 @@
             this.txtPromoName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPromoID = new System.Windows.Forms.TextBox();
-            this.packageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnEdit
+            // btnSave
             // 
-            this.btnEdit.Location = new System.Drawing.Point(474, 409);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 70;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(474, 446);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 70;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtClothesID
             // 
@@ -131,14 +133,43 @@
             this.dataGridView1.TabIndex = 64;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
-            // btnUpdate
+            // packageName
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(474, 449);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 63;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.packageName.HeaderText = "รหัสแพคเกจ";
+            this.packageName.Name = "packageName";
+            this.packageName.ReadOnly = true;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "ชื่อแพคเกจ";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "คำอธิบาย";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ราคา";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "จำนวน";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 50;
+            // 
+            // aa
+            // 
+            this.aa.HeaderText = "เสื้อผ้า";
+            this.aa.Name = "aa";
+            this.aa.ReadOnly = true;
             // 
             // btnDelete
             // 
@@ -225,50 +256,31 @@
             // txtPromoID
             // 
             this.txtPromoID.BackColor = System.Drawing.SystemColors.Window;
-            this.txtPromoID.Enabled = false;
             this.txtPromoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtPromoID.Location = new System.Drawing.Point(183, 284);
             this.txtPromoID.Name = "txtPromoID";
             this.txtPromoID.Size = new System.Drawing.Size(212, 23);
             this.txtPromoID.TabIndex = 54;
             // 
-            // packageName
+            // btnClear
             // 
-            this.packageName.HeaderText = "รหัสแพคเกจ";
-            this.packageName.Name = "packageName";
-            this.packageName.ReadOnly = true;
+            this.btnClear.Location = new System.Drawing.Point(474, 365);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 71;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.button1_Click);
             // 
-            // qty
+            // btnEdit
             // 
-            this.qty.HeaderText = "ชื่อแพคเกจ";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "คำอธิบาย";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ราคา";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "จำนวน";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 50;
-            // 
-            // aa
-            // 
-            this.aa.HeaderText = "เสื้อผ้า";
-            this.aa.Name = "aa";
-            this.aa.ReadOnly = true;
+            this.btnEdit.Location = new System.Drawing.Point(474, 406);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 72;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // frmAddPromotion
             // 
@@ -276,13 +288,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtClothesID);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtPromoQty);
             this.Controls.Add(this.txtPromoPrice);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -304,14 +317,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtClothesID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPromoQty;
         private System.Windows.Forms.TextBox txtPromoPrice;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -327,5 +339,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn aa;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
