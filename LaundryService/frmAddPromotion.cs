@@ -188,6 +188,31 @@ namespace LaundryService
             }
             conn.Close();
         }
-      
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            //DELETE
+
+            DialogResult dialogResult = MessageBox.Show("Do you want to delete " + txtPromoName.Text , "Message", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                SqlConnection conn = LaundryServiceConn.GetConnection();
+                SqlCommand scmd = new SqlCommand("DELETE FROM promotion WHERE [PROMO_ID]=@promoID ", conn);
+                conn.Open();
+
+                scmd.Parameters.AddWithValue("@promoID", txtPromoID.Text);
+                scmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Delete successed");
+
+                clear();
+                datagridRefresh();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
     }
 }
