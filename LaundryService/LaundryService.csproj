@@ -47,11 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerProfile.cs" />
     <Compile Include="frmAddClothes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAddClothes.Designer.cs">
       <DependentUpon>frmAddClothes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChoosePack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChoosePack.Designer.cs">
+      <DependentUpon>frmChoosePack.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -124,6 +131,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAddClothes.resx">
       <DependentUpon>frmAddClothes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChoosePack.resx">
+      <DependentUpon>frmChoosePack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

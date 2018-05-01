@@ -23,6 +23,8 @@ namespace LaundryService
             txtTypeID.Enabled = false;
             txtTypeName.Enabled = false;
 
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
             SqlConnection conn = LaundryServiceConn.GetConnection();
             SqlDataReader sqlRead = null;
             SqlCommand scmd = new SqlCommand(
@@ -121,6 +123,7 @@ namespace LaundryService
         private void datagridRefresh()
         {
             dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
 
             SqlConnection conn = LaundryServiceConn.GetConnection();
             SqlDataReader sqlRead = null;

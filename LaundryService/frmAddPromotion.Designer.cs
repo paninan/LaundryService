@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtClothesID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPromoQty = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@
             this.txtPromoID = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,15 +64,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // txtClothesID
-            // 
-            this.txtClothesID.BackColor = System.Drawing.SystemColors.Window;
-            this.txtClothesID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtClothesID.Location = new System.Drawing.Point(183, 488);
-            this.txtClothesID.Name = "txtClothesID";
-            this.txtClothesID.Size = new System.Drawing.Size(212, 23);
-            this.txtClothesID.TabIndex = 69;
             // 
             // label6
             // 
@@ -104,6 +95,7 @@
             this.txtPromoQty.Name = "txtPromoQty";
             this.txtPromoQty.Size = new System.Drawing.Size(212, 23);
             this.txtPromoQty.TabIndex = 66;
+            this.txtPromoQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPromoQty_KeyPress);
             // 
             // txtPromoPrice
             // 
@@ -113,6 +105,7 @@
             this.txtPromoPrice.Name = "txtPromoPrice";
             this.txtPromoPrice.Size = new System.Drawing.Size(212, 23);
             this.txtPromoPrice.TabIndex = 65;
+            this.txtPromoPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPromoPrice_KeyPress);
             // 
             // dataGridView1
             // 
@@ -283,15 +276,23 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(183, 490);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(212, 21);
+            this.comboBox1.TabIndex = 73;
+            // 
             // frmAddPromotion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtClothesID);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtPromoQty);
@@ -319,7 +320,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtClothesID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPromoQty;
@@ -342,5 +342,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn aa;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

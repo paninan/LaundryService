@@ -57,7 +57,6 @@ C:\Repo\Waan\LaundryService\LaundryService\bin\Debug\LaundryService.exe.config
 C:\Repo\Waan\LaundryService\LaundryService\bin\Debug\LaundryService.exe
 C:\Repo\Waan\LaundryService\LaundryService\bin\Debug\LaundryService.pdb
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.csprojResolveAssemblyReference.cache
-C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddPack.resources
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmCusInfo.resources
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmMain.resources
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmNewCus.resources
@@ -93,3 +92,8 @@ C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmLogin.res
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmManage.resources
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddPromotion.resources
 \\Mac\Home\Desktop\Waan\project\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddType.resources
+C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddClothes.resources
+C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmManage.resources
+C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddPromotion.resources
+C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddType.resources
+C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmChoosePack.resources

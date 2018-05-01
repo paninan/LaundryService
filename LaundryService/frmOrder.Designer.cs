@@ -38,10 +38,7 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -53,9 +50,13 @@
             this.btnReceive = new System.Windows.Forms.Button();
             this.txtReceive = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 49);
+            this.label2.Location = new System.Drawing.Point(25, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 4;
@@ -72,7 +73,7 @@
             // lblCusID
             // 
             this.lblCusID.AutoSize = true;
-            this.lblCusID.Location = new System.Drawing.Point(119, 49);
+            this.lblCusID.Location = new System.Drawing.Point(119, 23);
             this.lblCusID.Name = "lblCusID";
             this.lblCusID.Size = new System.Drawing.Size(10, 13);
             this.lblCusID.TabIndex = 5;
@@ -81,7 +82,7 @@
             // lblCusName
             // 
             this.lblCusName.AutoSize = true;
-            this.lblCusName.Location = new System.Drawing.Point(119, 78);
+            this.lblCusName.Location = new System.Drawing.Point(119, 52);
             this.lblCusName.Name = "lblCusName";
             this.lblCusName.Size = new System.Drawing.Size(10, 13);
             this.lblCusName.TabIndex = 7;
@@ -90,7 +91,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 78);
+            this.label3.Location = new System.Drawing.Point(25, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 6;
@@ -99,7 +100,7 @@
             // dtpSend
             // 
             this.dtpSend.AutoSize = true;
-            this.dtpSend.Location = new System.Drawing.Point(284, 90);
+            this.dtpSend.Location = new System.Drawing.Point(284, 64);
             this.dtpSend.Name = "dtpSend";
             this.dtpSend.Size = new System.Drawing.Size(32, 13);
             this.dtpSend.TabIndex = 8;
@@ -108,7 +109,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(284, 49);
+            this.label4.Location = new System.Drawing.Point(284, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 9;
@@ -116,14 +117,14 @@
             // 
             // dtpReceive
             // 
-            this.dtpReceive.Location = new System.Drawing.Point(339, 43);
+            this.dtpReceive.Location = new System.Drawing.Point(339, 17);
             this.dtpReceive.Name = "dtpReceive";
             this.dtpReceive.Size = new System.Drawing.Size(200, 20);
             this.dtpReceive.TabIndex = 10;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(339, 84);
+            this.dateTimePicker2.Location = new System.Drawing.Point(339, 58);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 11;
@@ -131,29 +132,20 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(122, 138);
+            this.comboBox1.Location = new System.Drawing.Point(122, 97);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 12;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 141);
+            this.label1.Location = new System.Drawing.Point(25, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "ประเภทสินค้า";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(270, 141);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(63, 13);
-            this.linkLabel1.TabIndex = 14;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "เพิ่มรายการ";
             // 
             // dataGridView2
             // 
@@ -163,25 +155,13 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3});
-            this.dataGridView2.Location = new System.Drawing.Point(122, 185);
+            this.dataGridView2.Location = new System.Drawing.Point(12, 156);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(344, 117);
+            this.dataGridView2.Size = new System.Drawing.Size(360, 133);
             this.dataGridView2.TabIndex = 15;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick_1);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ชื่อสินค้า";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "ราคา";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridView1
             // 
@@ -190,16 +170,20 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.packageName,
             this.price,
-            this.qty});
-            this.dataGridView1.Location = new System.Drawing.Point(22, 325);
+            this.qty,
+            this.Column4,
+            this.Column5});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 295);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(444, 119);
+            this.dataGridView1.Size = new System.Drawing.Size(556, 152);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 185);
+            this.label5.Location = new System.Drawing.Point(25, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 17;
@@ -208,7 +192,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(347, 476);
+            this.radioButton2.Location = new System.Drawing.Point(287, 500);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(48, 17);
             this.radioButton2.TabIndex = 21;
@@ -219,7 +203,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(401, 476);
+            this.radioButton1.Location = new System.Drawing.Point(341, 500);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(65, 17);
             this.radioButton1.TabIndex = 20;
@@ -229,7 +213,7 @@
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(386, 450);
+            this.txtTotal.Location = new System.Drawing.Point(326, 474);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(80, 20);
             this.txtTotal.TabIndex = 19;
@@ -237,7 +221,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(322, 453);
+            this.label8.Location = new System.Drawing.Point(262, 477);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 18;
@@ -271,26 +255,41 @@
             // 
             // txtReceive
             // 
-            this.txtReceive.Location = new System.Drawing.Point(386, 504);
+            this.txtReceive.Location = new System.Drawing.Point(326, 528);
             this.txtReceive.Name = "txtReceive";
             this.txtReceive.Size = new System.Drawing.Size(80, 20);
             this.txtReceive.TabIndex = 28;
+            this.txtReceive.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReceive_KeyPress);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(322, 507);
+            this.label7.Location = new System.Drawing.Point(262, 531);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 27;
             this.label7.Text = "รับเงิน";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "ชื่อสินค้า";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "ราคา";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 50;
             // 
             // packageName
             // 
             this.packageName.HeaderText = "ชื่อสินค้า";
             this.packageName.Name = "packageName";
             this.packageName.ReadOnly = true;
-            this.packageName.Width = 200;
+            this.packageName.Width = 150;
             // 
             // price
             // 
@@ -302,7 +301,21 @@
             // 
             this.qty.HeaderText = "จำนวน";
             this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
+            this.qty.Width = 50;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "ชื่อแพคเกจ";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 150;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "คงเหลือ";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 60;
             // 
             // frmOrder
             // 
@@ -321,7 +334,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dateTimePicker2);
@@ -355,10 +367,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -370,8 +379,12 @@
         private System.Windows.Forms.Button btnReceive;
         private System.Windows.Forms.TextBox txtReceive;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn packageName;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

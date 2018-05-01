@@ -30,8 +30,9 @@ namespace LaundryService
 
             if (checkBoxPhone.Checked == true)
             {
+                
                 SqlConnection connn = LaundryServiceConn.GetConnection();
-                SqlCommand scmdd = new SqlCommand("select count (*) as cnt from [laundryService].[dbo].[customer]  where [CUS_PHONE]=@cusPhone", connn);
+                SqlCommand scmdd = new SqlCommand("select count (*) as cnt ,[CUS_ID] from [laundryService].[dbo].[customer]  where [CUS_PHONE]=@cusPhone GROUP BY [CUS_ID] ", connn);
                 scmdd.Parameters.Clear();
                 scmdd.Parameters.AddWithValue("@cusPhone", txtCustomer.Text); 
                // scmdd.Parameters.AddWithValue("@cusId", txtCustomer.Text);
@@ -39,8 +40,16 @@ namespace LaundryService
                 connn.Open();
                 if (scmdd.ExecuteScalar().ToString() == "1")
                 {
-                    String cusId = txtCustomer.Text;
-                    Program.ACTIVE_CUSTOMER_ID = Int32.Parse(txtCustomer.Text);
+
+                    String cusId = null;
+                    SqlDataReader sRead = scmdd.ExecuteReader();
+                    while (sRead.Read())
+                    {
+                        //MessageBox.Show(sRead["CUS_ID"].ToString());
+                        cusId = sRead["CUS_ID"].ToString();
+                    }
+                    
+                    Program.ACTIVE_CUSTOMER_ID = Int32.Parse(cusId);                    
                     frmParent frm = new frmParent(cusId);
                     frm.Show();
                     this.Hide();
@@ -56,7 +65,7 @@ namespace LaundryService
             else  //seach by ID
             {
                 SqlConnection conn = LaundryServiceConn.GetConnection();
-                SqlCommand scmd = new SqlCommand("select count (*) as cnt from [laundryService].[dbo].[customer]  where [CUS_ID]=@cusId", conn);
+                SqlCommand scmd = new SqlCommand("select count (*) as cnt,[CUS_ID] from [laundryService].[dbo].[customer]  where [CUS_ID]=@cusId GROUP BY [CUS_ID] ", conn);
                 scmd.Parameters.Clear();
                 scmd.Parameters.AddWithValue("@cusId", txtCustomer.Text);
                 conn.Open();
@@ -73,7 +82,7 @@ namespace LaundryService
                 {
                     MessageBox.Show("Invalid ID customer or phone number,please enter again.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCustomer.Clear();
-                }
+                }                
                 conn.Close();
             }
            

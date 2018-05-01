@@ -13,6 +13,21 @@ namespace LaundryService
 {
     public partial class frmAddPromotion : Form
     {
+        private class Item
+        {
+            public string Name;
+            public int Value;
+            public Item(int value, string name)
+            {
+                Name = name; Value = value;
+            }
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+
         public frmAddPromotion()
         {
             InitializeComponent();
@@ -25,7 +40,10 @@ namespace LaundryService
             txtPromoDisc.Enabled = false;
             txtPromoPrice.Enabled = false;
             txtPromoQty.Enabled = false;
-            txtClothesID.Enabled = false;
+            comboBox1.Enabled = false;
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
 
             SqlConnection conn = LaundryServiceConn.GetConnection();
             SqlDataReader sqlRead = null;
@@ -47,6 +65,23 @@ namespace LaundryService
                     );
             }
             conn.Close();
+
+            using (SqlConnection con = LaundryServiceConn.GetConnection())
+            {
+                SqlCommand sqlCmd = new SqlCommand("SELECT * FROM clothes", con);
+                con.Open();
+                SqlDataReader sqlReader = sqlCmd.ExecuteReader();
+
+
+                while (sqlReader.Read())
+                {
+                    comboBox1.Items.Add(new Item(
+                        Int32.Parse(sqlReader["CL_ID"].ToString()), sqlReader["CL_NAME"].ToString())
+                    );
+                }
+
+                sqlReader.Close();
+            }
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -62,7 +97,7 @@ namespace LaundryService
             txtPromoDisc.Text = promoDesc;
             txtPromoPrice.Text = promoPrice;
             txtPromoQty.Text = promoQty;
-            txtClothesID.Text = clothesID;
+            comboBox1.Text = clothesID;
            
         }
 
@@ -80,7 +115,7 @@ namespace LaundryService
             txtPromoDisc.Enabled = true;
             txtPromoPrice.Enabled = true;
             txtPromoQty.Enabled = true;
-            txtClothesID.Enabled = true;
+            comboBox1.Enabled = true;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -90,7 +125,7 @@ namespace LaundryService
                  txtPromoDisc.Text == "" ||
                  txtPromoPrice.Text == "" ||
                  txtPromoQty.Text == "" ||
-                 txtClothesID.Text == "")
+                 comboBox1.Text == "")
             {
                 MessageBox.Show("Enter all data ,please.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -107,7 +142,7 @@ namespace LaundryService
                     scmd.Parameters.AddWithValue("@promoDesc", txtPromoDisc.Text);
                     scmd.Parameters.AddWithValue("@promoPrice", txtPromoPrice.Text);
                     scmd.Parameters.AddWithValue("@promoQty", txtPromoQty.Text);
-                    scmd.Parameters.AddWithValue("@clothesID", txtClothesID.Text);
+                    scmd.Parameters.AddWithValue("@clothesID", comboBox1.SelectedIndex + 1);
 
                     scmd.ExecuteNonQuery();
                     conn.Close();
@@ -128,7 +163,7 @@ namespace LaundryService
                     scmd.Parameters.AddWithValue("@promoDesc", txtPromoDisc.Text);
                     scmd.Parameters.AddWithValue("@promoPrice", txtPromoPrice.Text);
                     scmd.Parameters.AddWithValue("@promoQty", txtPromoQty.Text);
-                    scmd.Parameters.AddWithValue("@clothesID", txtClothesID.Text);
+                    scmd.Parameters.AddWithValue("@clothesID", comboBox1.SelectedIndex + 1);
 
                     scmd.ExecuteNonQuery();
                     conn.Close();
@@ -152,20 +187,21 @@ namespace LaundryService
             txtPromoDisc.Enabled = true;
             txtPromoPrice.Enabled = true;
             txtPromoQty.Enabled = true;
-            txtClothesID.Enabled = true;
+            comboBox1.Enabled = true;
 
             txtPromoID.Text = null;
             txtPromoName.Text = null;
             txtPromoDisc.Text = null;
             txtPromoPrice.Text = null;
             txtPromoQty.Text = null;
-            txtClothesID.Text = null;
+            comboBox1.Text = null;
         }
 
         private void datagridRefresh()
         {
 
             dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
 
             SqlConnection conn = LaundryServiceConn.GetConnection();
             SqlDataReader sqlRead = null;
@@ -212,6 +248,34 @@ namespace LaundryService
             else if (dialogResult == DialogResult.No)
             {
                 //do something else
+            }
+        }
+
+        private void txtPromoPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPromoQty_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }

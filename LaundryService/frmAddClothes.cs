@@ -13,6 +13,21 @@ namespace LaundryService
 {
     public partial class frmAddClothes : Form
     {
+        private class Item
+        {
+            public string Name;
+            public int Value;
+            public Item(int value, string name)
+            {
+                Name = name; Value = value;
+            }
+
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
+
         public frmAddClothes()
         {
             InitializeComponent();
@@ -28,9 +43,10 @@ namespace LaundryService
             txtClothesID.Enabled = false;
             txtClothesName.Enabled = false;
             txtClothesPrice.Enabled = false;
-            txtClothesType.Enabled = false;
-            
+            comboBox1.Enabled = false;
 
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
             SqlConnection conn = LaundryServiceConn.GetConnection();
                 SqlDataReader sqlRead = null;
                 SqlCommand scmd = new SqlCommand(
@@ -50,8 +66,25 @@ namespace LaundryService
                 }
                 conn.Close();
 
+            using (SqlConnection con = LaundryServiceConn.GetConnection())
+            {
+                SqlCommand sqlCmd = new SqlCommand("SELECT * FROM type", con);
+                con.Open();
+                SqlDataReader sqlReader = sqlCmd.ExecuteReader();
 
-            
+
+                while (sqlReader.Read())
+                {
+                    comboBox1.Items.Add(new Item(
+                        Int32.Parse(sqlReader["TYPE_ID"].ToString()), sqlReader["TYPE_NAME"].ToString())
+                    );
+                }
+
+                sqlReader.Close();
+            }
+
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -67,7 +100,7 @@ namespace LaundryService
             String priceAdd = dataGridView1[3, e.RowIndex].Value.ToString();
             txtClothesID.Text = clothesID;
             txtClothesName.Text = clothesName;
-            txtClothesType.Text = typeID;
+            comboBox1.Text = typeID;
             txtClothesPrice.Text = priceAdd;
         }
 
@@ -81,12 +114,12 @@ namespace LaundryService
             txtClothesID.Enabled = false;
             txtClothesName.Enabled = true;
             txtClothesPrice.Enabled = true;
-            txtClothesType.Enabled = true;
+            comboBox1.Enabled = true;
 
             txtClothesID.Text = null;
             txtClothesName.Text = null;
             txtClothesPrice.Text = null;
-            txtClothesType.Text = null;
+            comboBox1.Text = null;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -94,7 +127,7 @@ namespace LaundryService
             txtClothesID.Enabled = false;
             txtClothesName.Enabled = true;
             txtClothesPrice.Enabled = true;
-            txtClothesType.Enabled = true;
+            comboBox1.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -102,7 +135,7 @@ namespace LaundryService
 
             if (txtClothesName.Text == "" ||
                  txtClothesPrice.Text == "" ||
-                 txtClothesType.Text == "" )
+                 comboBox1.Text == "" )
             {
                 MessageBox.Show("Enter all data ,please.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -116,8 +149,8 @@ namespace LaundryService
                     conn.Open();
 
                     scmd.Parameters.AddWithValue("@clothesName", txtClothesName.Text);
-                    scmd.Parameters.AddWithValue("@typeID", txtClothesPrice.Text);
-                    scmd.Parameters.AddWithValue("@priceAdd", txtClothesType.Text);
+                    scmd.Parameters.AddWithValue("@typeID", comboBox1.SelectedIndex + 1);
+                    scmd.Parameters.AddWithValue("@priceAdd", txtClothesPrice.Text);
                     
                     scmd.ExecuteNonQuery();
                     conn.Close();
@@ -135,8 +168,8 @@ namespace LaundryService
 
                     scmd.Parameters.AddWithValue("@clothesID", txtClothesID.Text);
                     scmd.Parameters.AddWithValue("@clothesName", txtClothesName.Text);
-                    scmd.Parameters.AddWithValue("@typeID", txtClothesPrice.Text);
-                    scmd.Parameters.AddWithValue("@priceAdd", txtClothesType.Text);
+                    scmd.Parameters.AddWithValue("@typeID", comboBox1.SelectedIndex + 1);
+                    scmd.Parameters.AddWithValue("@priceAdd", txtClothesPrice.Text);
 
                     scmd.ExecuteNonQuery();
                     conn.Close();
@@ -151,6 +184,7 @@ namespace LaundryService
         private void datagridRefresh()
         {
             dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
 
             SqlConnection conn = LaundryServiceConn.GetConnection();
             SqlDataReader sqlRead = null;
@@ -196,6 +230,20 @@ namespace LaundryService
             else if (dialogResult == DialogResult.No)
             {
                 //do something else
+            }
+        }
+
+        private void txtClothesPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }
