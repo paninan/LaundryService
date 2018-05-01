@@ -74,11 +74,10 @@ namespace LaundryService
         private void รายการคงคางToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            frmRemain frm = new frmRemain();
+            frmRemain frm = new frmRemain(cusID);
             frm.TopLevel = false;
             panel1.Controls.Add(frm);
-            frm.Show();
-            
+            frm.Show();            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

@@ -15,35 +15,12 @@ namespace LaundryService
     {
         String cusID = null;
         string typeID;
-
-        // class entity -> helper to collect data
-        private class EntityClother
-        {
-            public int clId;
-            public string clName;
-            public int typeId;
-            public double priceAdd;
-
-            public EntityClother(int clotherID, string clotherName, int typeId, double price)
-            {
-                this.clId = clotherID;
-                this.clName = clotherName;
-                this.typeId = typeId;
-                this.priceAdd = price;
-            }
-
-            public override string ToString()
-            {
-                return clName;
-            }
-
-        }
-
-        private class Item
+        
+        private class ItemCombo
         {
             public string Name;
             public int Value;
-            public Item(int value, string name)
+            public ItemCombo(int value, string name)
             {
                 Name = name; Value = value;
             }
@@ -79,23 +56,7 @@ namespace LaundryService
             conn.Close();
 
             showDataGrid();
-
             comboType();
-
-           // SqlConnection con = LaundryServiceConn.GetConnection();
-           // SqlCommand cmd = new SqlCommand("select * from type ", con);
-           // scmd.Parameters.Clear();
-           //// cmd.Parameters.AddWithValue("@accNO", accNo);
-           // con.Open();
-           // SqlDataReader readerr = null;
-           // readerr = cmd.ExecuteReader();
-           // while (readerr.Read())
-           // {
-           //     comboBox1.Text = readerr["TYPE_NAME"].ToString();
-
-            // }
-            // con.Close();
-
         }
         private void showDataGrid()
         {
@@ -112,14 +73,7 @@ namespace LaundryService
             sqlRead = scmd.ExecuteReader();
             dataGridView2.ReadOnly = true;
             while (sqlRead.Read())
-            {
-                //EntityClother enClother = new EntityClother(
-                //    Int32.Parse( sqlRead["CL_ID"].ToString()),
-                //    sqlRead["CL_NAME"].ToString(),
-                //    Int32.Parse(sqlRead["TYPE_ID"].ToString()),
-                //    Double.Parse(sqlRead["PRICE_ADD"].ToString())
-                //);
-                
+            {   
                 dataGridView2.Rows.Add(sqlRead["CL_ID"].ToString(), sqlRead["CL_NAME"].ToString(), sqlRead["PRICE_ADD"].ToString() );
             }
             conn.Close();
@@ -142,13 +96,6 @@ namespace LaundryService
             dataGridView2.ReadOnly = true;
             while (sqlRead.Read())
             {
-                // EntityClother enClother = new EntityClother(
-                //    Int32.Parse(sqlRead["CL_ID"].ToString()),
-                //    sqlRead["CL_NAME"].ToString(),
-                //    Int32.Parse(sqlRead["TYPE_ID"].ToString()),
-                //    Double.Parse(sqlRead["PRICE_ADD"].ToString())
-                //);
-
                 dataGridView2.Rows.Add(sqlRead["CL_ID"].ToString(), sqlRead["CL_NAME"].ToString(), sqlRead["PRICE_ADD"].ToString());
             }
             conn.Close();
@@ -178,7 +125,7 @@ namespace LaundryService
 
                 while (sqlReader.Read())
                 {   
-                    comboBox1.Items.Add(new Item(
+                    comboBox1.Items.Add(new ItemCombo(
                         Int32.Parse(sqlReader["TYPE_ID"].ToString()), sqlReader["TYPE_NAME"].ToString())
                     );                    
                 }
@@ -189,7 +136,7 @@ namespace LaundryService
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Item itm = (Item)comboBox1.SelectedItem;            
+            ItemCombo itm = (ItemCombo)comboBox1.SelectedItem;            
             showDataGrid(itm.Value);
         }
 
@@ -426,5 +373,6 @@ namespace LaundryService
             
             return false;
         }
+        
     }
 }

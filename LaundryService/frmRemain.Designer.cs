@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
             this.orderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,9 +37,18 @@
             this.dateReceive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateSend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.back = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.pay = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtOrdComplete = new System.Windows.Forms.Label();
+            this.txtOrderRemain = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -53,12 +63,22 @@
             this.price,
             this.dateReceive,
             this.dateSend,
-            this.back,
-            this.pay});
-            this.dataGridView1.Location = new System.Drawing.Point(2, 12);
+            this.back});
+            this.dataGridView1.Location = new System.Drawing.Point(4, 37);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(614, 205);
+            this.dataGridView1.Size = new System.Drawing.Size(594, 205);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(397, 248);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(192, 23);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "บันทึก";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // orderID
             // 
@@ -102,33 +122,102 @@
             this.back.Name = "back";
             this.back.Width = 50;
             // 
-            // pay
+            // dataGridView2
             // 
-            this.pay.HeaderText = "จ่ายแล้ว";
-            this.pay.Name = "pay";
-            this.pay.Width = 50;
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewCheckBoxColumn1});
+            this.dataGridView2.Location = new System.Drawing.Point(4, 309);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(594, 205);
+            this.dataGridView2.TabIndex = 2;
             // 
-            // btnSave
+            // dataGridViewTextBoxColumn1
             // 
-            this.btnSave.Location = new System.Drawing.Point(302, 254);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "บันทึก";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "รหัสออเดอร์";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "ชื่อรายการ";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "จำนวน";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "ราคา";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "วันรับ";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "วันส่ง";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 70;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "คืนผ้า";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 50;
+            // 
+            // txtOrdComplete
+            // 
+            this.txtOrdComplete.AutoSize = true;
+            this.txtOrdComplete.Location = new System.Drawing.Point(3, 293);
+            this.txtOrdComplete.Name = "txtOrdComplete";
+            this.txtOrdComplete.Size = new System.Drawing.Size(79, 13);
+            this.txtOrdComplete.TabIndex = 3;
+            this.txtOrdComplete.Text = "Order complete";
+            // 
+            // txtOrderRemain
+            // 
+            this.txtOrderRemain.AutoSize = true;
+            this.txtOrderRemain.Location = new System.Drawing.Point(3, 21);
+            this.txtOrderRemain.Name = "txtOrderRemain";
+            this.txtOrderRemain.Size = new System.Drawing.Size(67, 13);
+            this.txtOrderRemain.TabIndex = 4;
+            this.txtOrderRemain.Text = "Order remain";
             // 
             // frmRemain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 600);
+            this.ClientSize = new System.Drawing.Size(609, 600);
+            this.Controls.Add(this.txtOrderRemain);
+            this.Controls.Add(this.txtOrdComplete);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmRemain";
             this.Text = "รายการคงค้าง";
+            this.Load += new System.EventHandler(this.frmRemain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -143,6 +232,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateReceive;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSend;
         private System.Windows.Forms.DataGridViewCheckBoxColumn back;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn pay;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.Label txtOrdComplete;
+        private System.Windows.Forms.Label txtOrderRemain;
     }
 }
