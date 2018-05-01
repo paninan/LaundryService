@@ -96,5 +96,4 @@ C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddClothe
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmManage.resources
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddPromotion.resources
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmAddType.resources
-C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmChoosePack.resources
 C:\Repo\Waan\LaundryService\LaundryService\obj\Debug\LaundryService.frmChoosePackage.resources

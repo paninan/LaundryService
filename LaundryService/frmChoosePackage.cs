@@ -80,7 +80,7 @@ namespace LaundryService
         
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            this.frmParentOrder.updateDataGridPackage( dataGridView1[1, e.RowIndex].Value.ToString(), int.Parse(dataGridView1[3, e.RowIndex].Value.ToString()) );
+            this.frmParentOrder.updateDataGridPackage(dataGridView1[0, e.RowIndex].Value.ToString(), dataGridView1[1, e.RowIndex].Value.ToString(), int.Parse(dataGridView1[3, e.RowIndex].Value.ToString()) );
             this.Close();
         }
     }

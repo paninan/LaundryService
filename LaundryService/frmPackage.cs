@@ -99,7 +99,7 @@ namespace LaundryService
                 txtChange.Text = change.ToString();
 
                 
-                    SqlConnection conn = LaundryServiceConn.GetConnection();
+                SqlConnection conn = LaundryServiceConn.GetConnection();
 
                 foreach (DataGridViewRow row in dataGridView2.Rows)
                 {
