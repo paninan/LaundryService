@@ -295,20 +295,62 @@ namespace LaundryService
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            double moneychange = 0.0;
-            moneychange = float.Parse(txtReceive.Text) - float.Parse(txtTotal.Text);
-
-            if(moneychange >= 0 )
+            // check all value to calculate
+            if( !string.IsNullOrEmpty(txtReceive.Text) || !string.IsNullOrEmpty(txtTotal.Text))
             {
-                txtChange.Text = moneychange.ToString("F");
-            }
-            else
-            {
-                txtChange.Text = moneychange.ToString();
-            }
+                double moneychange = 0.0;
+                moneychange = float.Parse(txtReceive.Text) - float.Parse(txtTotal.Text);
 
-
+                if (moneychange >= 0)
+                {
+                    txtChange.Text = moneychange.ToString("F");
+                }
+                else
+                {
+                    txtChange.Text = moneychange.ToString();
+                }
+            }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string orderNo = generateOrderNo();
+
+            using (SqlConnection conn = LaundryServiceConn.GetConnection())
+            {
+                string saveNewOrder = " INSERT INTO [order] " +
+                    " ([ORDER_NO],[ORDER_REGISTER_DATE],[ORDER_COMPETE],[ORDER_EXPIRE],[PROMO_ID], [CUS_ID] ,[CL_ID] ,[ORDER_QTY] , [ORDER_PRICE] ) " +
+                    " VALUES " +
+                    " ( @orderNo, @orderRegisDate, @orderCompleteDate, @orderExpireDate, @promoId, @cusId , @clotherId ,@orderQty , @orderPrice) ";
+                SqlCommand scmd = new SqlCommand(saveNewOrder, conn);
+
+                if (ConnectionState.Closed == conn.State)
+                    conn.Open();                
+
+                scmd.Parameters.Clear();
+                scmd.Parameters.AddWithValue("@orderNo", orderNo);
+                scmd.Parameters.AddWithValue("@orderRegisDate", DateTime.Now.Date);
+                scmd.Parameters.AddWithValue("@orderCompleteDate", dateTimePicker2.Value.Date);
+                scmd.Parameters.AddWithValue("@orderExpireDate", DateTime.Now.AddYears(1));
+                scmd.Parameters.AddWithValue("@promoId", 1);
+                scmd.Parameters.AddWithValue("@cusId", cusID);
+                scmd.Parameters.AddWithValue("@clotherId", 1);
+                scmd.Parameters.AddWithValue("@orderQty", 1);
+                scmd.Parameters.AddWithValue("@orderPrice", 1);
+
+                scmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
+        private string generateOrderNo()
+        {
+            // format : REGISTERDATE-CUS_ID-RANDOM(6)
+            Random rnd = new Random();
+            int rnum = rnd.Next(1, 999999);            
+            String orderNo = string.Format("{0:yyyyMMdd}-{1,6:D6}-{2,6:D6}", DateTime.Now.Date, int.Parse(cusID), rnd.Next(1, 999999));
+            return orderNo;
         }
     }
 }

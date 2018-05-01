@@ -112,7 +112,7 @@ namespace LaundryService
 
 
 
-                    string scmd = "INSERT INTO promotionCondition ([PROMO_ID],[CUS_ID],[PRO_DATE_BUY],[BALANCE] ,[TOTAL]) VALUES ( @promoID, @cusID, @proDateBuy, @balance,@total)";
+                    string scmd = "INSERT INTO promotionCondition ([PROMO_ID],[CUS_ID],[PRO_DATE_BUY],[QTY_ITEM] ,[BALANCE] ,[TOTAL]) VALUES ( @promoID, @cusID, @proDateBuy, @qty,@balance,@total)";
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(scmd, conn))
                     {
@@ -122,6 +122,7 @@ namespace LaundryService
                         cmd.Parameters.AddWithValue("@promoID", cellProID);
                         cmd.Parameters.AddWithValue("@cusID", cusID);
                         cmd.Parameters.AddWithValue("@proDateBuy", thisDay);
+                        cmd.Parameters.AddWithValue("@qty", cellProQty);
                         cmd.Parameters.AddWithValue("@balance", cellProQty);
                         cmd.Parameters.AddWithValue("@total", total);
 
