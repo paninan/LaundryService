@@ -54,7 +54,7 @@ namespace LaundryService
             }
         }
 
-            public frmOrder(string cusId)
+        public frmOrder(string cusId)
         {
             InitializeComponent();
             cusID = cusId;
@@ -126,8 +126,7 @@ namespace LaundryService
         }
 
         private void showDataGrid(int  typeId)
-        {
-            MessageBox.Show(typeId.ToString());
+        {            
             SqlConnection conn = LaundryServiceConn.GetConnection();
             SqlDataReader sqlRead = null;
             SqlCommand scmd = new SqlCommand(
@@ -153,7 +152,6 @@ namespace LaundryService
                 dataGridView2.Rows.Add(
                     enClother,
                     sqlRead["PRICE_ADD"].ToString()
-
                     );
             }
             conn.Close();
@@ -164,7 +162,7 @@ namespace LaundryService
         {
             String name = dataGridView2[0, e.RowIndex].Value.ToString();
             String price = dataGridView2[1, e.RowIndex].Value.ToString();
-            //MessageBox.Show("1" + name + "2" + price);
+            
             dataGridView1.Rows.Add(name, price);
         }
 
@@ -240,8 +238,8 @@ namespace LaundryService
 
         private void openFrmChoosePackage()
         {
-            frmChoosePack frmChoosePackage = new frmChoosePack(this,cusID);
-            frmChoosePackage.Show();
+            frmChoosePackage frmChoosePkg = new frmChoosePackage(this,cusID);
+            frmChoosePkg.Show();
         }
 
         public void updateDataGridPackage(string packageName,int balance)
@@ -251,6 +249,66 @@ namespace LaundryService
             dtCellPackage.Value = packageName;
             dtCellBalance.Value = balance.ToString();
         }
+
         
+
+        private void updateBlance()
+        {
+            double total = 0.0;
+            double Receive = 0.0;
+            double sumPrice = 0.0;
+            float qty = 1.0f;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                Console.Write(row);
+                // price
+                if(row.Cells[1].Value != null && row.Cells[2].Value != null )
+                {
+                    sumPrice += float.Parse(row.Cells[1].Value.ToString()) * float.Parse(row.Cells[2].Value.ToString());
+                }
+            }
+
+
+            txtTotal.Text = sumPrice.ToString("F");
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            updateBlance();
+        }
+
+        private void dataGridView1_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            updateBlance();
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReceive_Click(object sender, EventArgs e)
+        {
+            double moneychange = 0.0;
+            moneychange = float.Parse(txtReceive.Text) - float.Parse(txtTotal.Text);
+
+            if(moneychange >= 0 )
+            {
+                txtChange.Text = moneychange.ToString("F");
+            }
+            else
+            {
+                txtChange.Text = moneychange.ToString();
+            }
+
+
+            
+        }
     }
 }

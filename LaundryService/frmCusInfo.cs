@@ -79,8 +79,9 @@ namespace LaundryService
 
         private void update()
         {
-           
-                SqlConnection conn = LaundryServiceConn.GetConnection();
+
+            using (SqlConnection conn = LaundryServiceConn.GetConnection())
+            {
                 SqlCommand scmd = new SqlCommand("UPDATE customer SET  [CUS_NAME] =@cusName ,[CUS_PHONE] = @cusPhone,[CUS_ADDRESS] = @cusAddress WHERE [CUS_ID]= @cusId", conn);
                 conn.Open();
 
@@ -88,11 +89,13 @@ namespace LaundryService
                 scmd.Parameters.AddWithValue("@cusName", txtCusname.Text);
                 scmd.Parameters.AddWithValue("@cusPhone", txtCusPhone.Text);
                 scmd.Parameters.AddWithValue("@cusAddress", txtCusAddress.Text);
-            scmd.Parameters.AddWithValue("@cusId", txtCusId.Text);
+                scmd.Parameters.AddWithValue("@cusId", txtCusId.Text);
 
-            scmd.ExecuteNonQuery();
+                scmd.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Update successed");
+            }
+            
             
         }
 

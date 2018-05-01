@@ -60,6 +60,12 @@
     <Compile Include="frmChoosePack.Designer.cs">
       <DependentUpon>frmChoosePack.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChoosePackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChoosePackage.Designer.cs">
+      <DependentUpon>frmChoosePackage.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmChoosePack.resx">
       <DependentUpon>frmChoosePack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChoosePackage.resx">
+      <DependentUpon>frmChoosePackage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
