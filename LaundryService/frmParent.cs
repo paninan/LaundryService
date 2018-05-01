@@ -36,6 +36,11 @@ namespace LaundryService
                 this.Text = "Customer : " + reader["CUS_NAME"].ToString();
             }
             conn.Close();
+            panel1.Controls.Clear();
+            frmCusInfo frm = new frmCusInfo(cusID);
+            frm.TopLevel = false;
+            panel1.Controls.Add(frm);
+            frm.Show();
 
         }
 

@@ -98,6 +98,17 @@ namespace LaundryService
         private void button3_Click(object sender, EventArgs e)
         {
             add();
+            txtCusName.Clear();
+            txtCusPhone.Clear();
+            txtCusAddress.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmMain frm = new frmMain();
+            frm.Show();
+            this.Hide();
+
         }
     }
 }

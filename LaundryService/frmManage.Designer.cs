@@ -105,6 +105,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmManage";
             this.Text = "frmAddPack";
+            this.Load += new System.EventHandler(this.frmManage_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

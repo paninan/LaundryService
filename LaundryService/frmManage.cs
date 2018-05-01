@@ -51,5 +51,14 @@ namespace LaundryService
             frm.Show();
             this.Hide();
         }
+
+        private void frmManage_Load(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            frmAddClothes frm = new frmAddClothes();
+            frm.TopLevel = false;
+            panel1.Controls.Add(frm);
+            frm.Show();
+        }
     }
 }
