@@ -17,9 +17,12 @@ namespace LaundryService
         {
             InitializeComponent();
         }
-
+        Int32 count = 0;
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            
+
+
             if (String.IsNullOrEmpty(txtUsername.Text) || txtUsername.Text == "Username")
             {
                 MessageBox.Show("Enter Username ,please.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -32,6 +35,8 @@ namespace LaundryService
                 return;
             }
             
+            if(count < 3)
+            {
                 SqlConnection conn = LaundryServiceConn.GetConnection();
                 SqlCommand scmd = new SqlCommand("select count (*) as cnt from [laundryService].[dbo].[user]  where [USERNAME]=@usr and [PASSWORD]=@pwd", conn);
                 scmd.Parameters.Clear();
@@ -47,11 +52,19 @@ namespace LaundryService
                 }
                 else
                 {
-                    MessageBox.Show("Login fail.");
+                    MessageBox.Show("Login fail.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtUsername.Clear();
                     txtPassword.Clear();
+                    count = count +  1;
                 }
                 conn.Close();
+            }
+            else
+            {
+                MessageBox.Show("Connect Developer", "Validate", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.Close();
+            }
+                
             
             
 
