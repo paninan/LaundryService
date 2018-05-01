@@ -108,8 +108,6 @@ namespace LaundryService
             String name = dataGridView2[1, e.RowIndex].Value.ToString();
             String price = dataGridView2[2, e.RowIndex].Value.ToString();
            
-
-
             dataGridView1.Rows.Add(id,name, price);
         }
 
@@ -122,7 +120,6 @@ namespace LaundryService
                 conn.Open();
                 SqlDataReader sqlReader = sqlCmd.ExecuteReader();
                 
-
                 while (sqlReader.Read())
                 {   
                     comboBox1.Items.Add(new ItemCombo(
@@ -190,9 +187,7 @@ namespace LaundryService
             dtCellPackageName.Value = packageName;
             dtCellBalance.Value = balance.ToString();
         }
-
         
-
         private void updateBlance()
         {
             double total = 0.0;
@@ -234,88 +229,88 @@ namespace LaundryService
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            // check all value to calculate
-            if( !string.IsNullOrEmpty(txtReceive.Text) || !string.IsNullOrEmpty(txtTotal.Text))
-            {
-                double moneychange = 0.0;
-                moneychange = float.Parse(txtReceive.Text) - float.Parse(txtTotal.Text);
 
-                if (moneychange >= 0)
-                {
+            if (Double.Parse(txtReceive.Text) < Double.Parse(txtTotal.Text) || String.IsNullOrEmpty(txtReceive.Text))
+            {
+                MessageBox.Show("Sorry, not enough money.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                // check all value to calculate
+                
+                    double moneychange = 0.0;
+                    moneychange = Double.Parse(txtReceive.Text) - Double.Parse(txtTotal.Text);
                     txtChange.Text = moneychange.ToString("F");
-                }
-                else
+
+                // CHECK PACKAGE BALANCE
+                if (checkPackageBalance())
                 {
-                    txtChange.Text = moneychange.ToString();
+                    // SAVE AND UPDATE BALANCE
+                    string orderNo = generateOrderNo();
+                    using (SqlConnection conn = LaundryServiceConn.GetConnection())
+                    {
+                        // date row data from dataGridView1
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            string saveNewOrder = " INSERT INTO [order] " +
+                            " ([ORDER_NO],[ORDER_REGISTER_DATE],[ORDER_COMPETE],[ORDER_EXPIRE],[PROMO_ID], [CUS_ID] ,[CL_ID] ,[ORDER_QTY] , [ORDER_PRICE] ) " +
+                            " VALUES " +
+                            " ( @orderNo, @orderRegisDate, @orderCompleteDate, @orderExpireDate, @promoId, @cusId , @clotherId ,@orderQty , @orderPrice) ";
+                            SqlCommand scmd = new SqlCommand(saveNewOrder, conn);
+
+                            if (ConnectionState.Closed == conn.State)
+                                conn.Open();
+
+                            String clotherId = row.Cells[0].Value.ToString();
+                            String orderPrice = row.Cells[2].Value.ToString();
+                            String orderQty = row.Cells[3].Value.ToString();
+                            String promoId = row.Cells[4].Value.ToString();
+
+                            scmd.Parameters.Clear();
+                            scmd.Parameters.AddWithValue("@orderNo", orderNo);
+                            scmd.Parameters.AddWithValue("@orderRegisDate", DateTime.Now.Date);
+                            scmd.Parameters.AddWithValue("@orderCompleteDate", dateTimePicker2.Value.Date);
+                            scmd.Parameters.AddWithValue("@orderExpireDate", DateTime.Now.AddYears(1));
+                            scmd.Parameters.AddWithValue("@promoId", promoId);
+                            scmd.Parameters.AddWithValue("@cusId", cusID);
+                            scmd.Parameters.AddWithValue("@clotherId", clotherId);
+                            scmd.Parameters.AddWithValue("@orderQty", orderQty);
+                            scmd.Parameters.AddWithValue("@orderPrice", orderPrice);
+
+                            // update balance in [promotionCondition]
+                            string upDate = "UPDATE [promotionCondition] SET [BALANCE] = [BALANCE] - @balance WHERE [PROMO_ID] = @promoId AND[CUS_ID] = @cusId ";
+                            SqlCommand ucmd = new SqlCommand(upDate, conn);
+                            if (ConnectionState.Closed == conn.State)
+                                conn.Open();
+
+                            ucmd.Parameters.Clear();
+                            ucmd.Parameters.AddWithValue("@balance", orderQty);
+                            ucmd.Parameters.AddWithValue("@promoId", promoId);
+                            ucmd.Parameters.AddWithValue("@cusId", cusID);
+
+                            if (scmd.ExecuteNonQuery() > 0 && ucmd.ExecuteNonQuery() > 0)
+                            {
+                                MessageBox.Show("Save complete");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Save not complete");
+                            }
+
+                        }
+
+                        conn.Close();
+                    }
+
                 }
+
             }
             
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // CHECK PACKAGE BALANCE
-            if( checkPackageBalance() )
-            {
-                // SAVE AND UPDATE BALANCE
-                string orderNo = generateOrderNo();
-                using (SqlConnection conn = LaundryServiceConn.GetConnection())
-                {
-                    // date row data from dataGridView1
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        string saveNewOrder = " INSERT INTO [order] " +
-                        " ([ORDER_NO],[ORDER_REGISTER_DATE],[ORDER_COMPETE],[ORDER_EXPIRE],[PROMO_ID], [CUS_ID] ,[CL_ID] ,[ORDER_QTY] , [ORDER_PRICE] ) " +
-                        " VALUES " +
-                        " ( @orderNo, @orderRegisDate, @orderCompleteDate, @orderExpireDate, @promoId, @cusId , @clotherId ,@orderQty , @orderPrice) ";
-                        SqlCommand scmd = new SqlCommand(saveNewOrder, conn);
-
-                        if (ConnectionState.Closed == conn.State)
-                            conn.Open();
-
-                        String clotherId = row.Cells[0].Value.ToString();
-                        String orderPrice = row.Cells[2].Value.ToString();
-                        String orderQty = row.Cells[3].Value.ToString();
-                        String promoId = row.Cells[4].Value.ToString();
-
-                        scmd.Parameters.Clear();
-                        scmd.Parameters.AddWithValue("@orderNo", orderNo);
-                        scmd.Parameters.AddWithValue("@orderRegisDate", DateTime.Now.Date);
-                        scmd.Parameters.AddWithValue("@orderCompleteDate", dateTimePicker2.Value.Date);
-                        scmd.Parameters.AddWithValue("@orderExpireDate", DateTime.Now.AddYears(1));
-                        scmd.Parameters.AddWithValue("@promoId", promoId);
-                        scmd.Parameters.AddWithValue("@cusId", cusID);
-                        scmd.Parameters.AddWithValue("@clotherId", clotherId);
-                        scmd.Parameters.AddWithValue("@orderQty", orderQty);
-                        scmd.Parameters.AddWithValue("@orderPrice", orderPrice);
-
-                        // update balance in [promotionCondition]
-                        string upDate = "UPDATE [promotionCondition] SET [BALANCE] = [BALANCE] - @balance WHERE [PROMO_ID] = @promoId AND[CUS_ID] = @cusId ";
-                        SqlCommand ucmd = new SqlCommand(upDate, conn);
-                        if (ConnectionState.Closed == conn.State)
-                            conn.Open();
-
-                        ucmd.Parameters.Clear();
-                        ucmd.Parameters.AddWithValue("@balance", orderQty);
-                        ucmd.Parameters.AddWithValue("@promoId", promoId);
-                        ucmd.Parameters.AddWithValue("@cusId", cusID);
-
-                        if (scmd.ExecuteNonQuery() > 0 && ucmd.ExecuteNonQuery() > 0)
-                        {
-                            MessageBox.Show("Save complete");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Save not complete");
-                        }
-
-                    }
-
-                    conn.Close();
-                }
-
-            }
-
+           
         }
 
         private string generateOrderNo()
@@ -326,6 +321,7 @@ namespace LaundryService
             String orderNo = string.Format("{0:yyyyMMdd}-{1,6:D6}-{2,6:D6}", DateTime.Now.Date, int.Parse(cusID), rnd.Next(1, 999999));
             return orderNo;
         }
+
 
         private  Boolean checkPackageBalance()
         {
@@ -351,6 +347,7 @@ namespace LaundryService
                     pkgNames.Add(packageId, packageName); 
                 }
             }
+            
 
             String errorMessage = "";
             foreach (KeyValuePair<int, int> entry in pkgs)

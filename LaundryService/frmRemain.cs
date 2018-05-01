@@ -108,7 +108,8 @@ namespace LaundryService
                 String orderNo = "";
                 while (sqlRead.Read())
                 {
-                    orderNo = orderNo.Equals(sqlRead["ORDER_NO"].ToString()) ? "" : sqlRead["ORDER_NO"].ToString();
+                    //orderNo = orderNo.Equals(sqlRead["ORDER_NO"].ToString()) ? "" : sqlRead["ORDER_NO"].ToString();
+                    orderNo = sqlRead["ORDER_NO"].ToString();
                     DateTime regisDate = Convert.ToDateTime(sqlRead["ORDER_REGISTER_DATE"].ToString());
                     DateTime completeDate = Convert.ToDateTime(sqlRead["ORDER_COMPETE"].ToString());
 
