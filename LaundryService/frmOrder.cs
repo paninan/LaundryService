@@ -198,9 +198,13 @@ namespace LaundryService
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {   
                 // price
-                if(row.Cells[2].Value != null && row.Cells[3].Value != null )
+                if(row.Cells[2].Value != null && row.Cells[3].Value != null && row.Cells[4].Value != null  )
                 {
-                    sumPrice += float.Parse(row.Cells[2].Value.ToString()) * float.Parse(row.Cells[3].Value.ToString());
+                    if (row.Cells[4].Value.ToString() == "0")
+                    {
+                        sumPrice += float.Parse(row.Cells[2].Value.ToString()) * float.Parse(row.Cells[3].Value.ToString());
+                    }
+                    
                 }
             }
 
@@ -229,6 +233,11 @@ namespace LaundryService
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
+            if( checkInput() == false )
+            {
+                MessageBox.Show("Please ,Fill your input");
+                return;
+            }
 
             if (Double.Parse(txtReceive.Text) < Double.Parse(txtTotal.Text) || String.IsNullOrEmpty(txtReceive.Text))
             {
@@ -236,11 +245,10 @@ namespace LaundryService
             }
             else
             {
-                // check all value to calculate
-                
-                    double moneychange = 0.0;
-                    moneychange = Double.Parse(txtReceive.Text) - Double.Parse(txtTotal.Text);
-                    txtChange.Text = moneychange.ToString("F");
+                // check all value to calculate                
+                double moneychange = 0.0;
+                moneychange = Double.Parse(txtReceive.Text) - Double.Parse(txtTotal.Text);
+                txtChange.Text = moneychange.ToString("F");
 
                 // CHECK PACKAGE BALANCE
                 if (checkPackageBalance())
@@ -250,6 +258,8 @@ namespace LaundryService
                     using (SqlConnection conn = LaundryServiceConn.GetConnection())
                     {
                         // date row data from dataGridView1
+                        int cntSavedItem = 0;
+                        int cntItem = dataGridView1.RowCount;
                         foreach (DataGridViewRow row in dataGridView1.Rows)
                         {
                             string saveNewOrder = " INSERT INTO [order] " +
@@ -277,26 +287,37 @@ namespace LaundryService
                             scmd.Parameters.AddWithValue("@orderQty", orderQty);
                             scmd.Parameters.AddWithValue("@orderPrice", orderPrice);
 
-                            // update balance in [promotionCondition]
-                            string upDate = "UPDATE [promotionCondition] SET [BALANCE] = [BALANCE] - @balance WHERE [PROMO_ID] = @promoId AND[CUS_ID] = @cusId ";
-                            SqlCommand ucmd = new SqlCommand(upDate, conn);
-                            if (ConnectionState.Closed == conn.State)
-                                conn.Open();
-
-                            ucmd.Parameters.Clear();
-                            ucmd.Parameters.AddWithValue("@balance", orderQty);
-                            ucmd.Parameters.AddWithValue("@promoId", promoId);
-                            ucmd.Parameters.AddWithValue("@cusId", cusID);
-
-                            if (scmd.ExecuteNonQuery() > 0 && ucmd.ExecuteNonQuery() > 0)
+                            //check ( pakacge id  , promotion id ) is 0 not update promotion balance
+                            if (promoId != "0")
                             {
-                                MessageBox.Show("Save complete");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Save not complete");
+                            
+                                // update balance in [promotionCondition]
+                                string upDate = "UPDATE [promotionCondition] SET [BALANCE] = [BALANCE] - @balance WHERE [PROMO_ID] = @promoId AND[CUS_ID] = @cusId ";
+                                SqlCommand ucmd = new SqlCommand(upDate, conn);
+                                if (ConnectionState.Closed == conn.State)
+                                    conn.Open();
+
+                                ucmd.Parameters.Clear();
+                                ucmd.Parameters.AddWithValue("@balance", orderQty);
+                                ucmd.Parameters.AddWithValue("@promoId", promoId);
+                                ucmd.Parameters.AddWithValue("@cusId", cusID);
+                                ucmd.ExecuteNonQuery();
                             }
 
+                            cntSavedItem += scmd.ExecuteNonQuery();
+
+                           
+
+                        }
+
+
+                        if (cntSavedItem == cntItem)
+                        {
+                            MessageBox.Show("Save complete");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Save not complete");
                         }
 
                         conn.Close();
@@ -336,6 +357,12 @@ namespace LaundryService
                 int balance = int.Parse(row.Cells[6].Value.ToString());
                 int balEntry = 0;
 
+                // package id == 0 ; not check condition
+                if(packageId == 0)
+                {
+                    continue;
+                }
+
                 if (pkgs.TryGetValue(packageId, out balEntry))
                 {
                     pkgs.Remove(packageId);
@@ -369,6 +396,32 @@ namespace LaundryService
             }
             
             return false;
+        }
+
+        private Boolean checkInput()
+        {
+            Boolean valid = true;
+            valid = !String.IsNullOrWhiteSpace(txtReceive.Text) && valid;
+
+            // check grid qty
+            if(dataGridView1.RowCount > 0)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    valid = (row.Cells[3].Value != null) && valid;
+
+                    if( row.Cells[4].Value == null )
+                    {
+                        row.Cells[4].Value = 0;     // package id
+                        row.Cells[5].Value = "-";   // package name
+                        row.Cells[6].Value = 0;     // balance
+                    }
+                }
+            }
+            
+
+
+            return valid;
         }
         
     }
