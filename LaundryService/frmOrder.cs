@@ -109,6 +109,7 @@ namespace LaundryService
             String price = dataGridView2[2, e.RowIndex].Value.ToString();
            
             dataGridView1.Rows.Add(id,name, price);
+            updateBlance();
         }
 
         private void comboType()
@@ -151,16 +152,6 @@ namespace LaundryService
             }
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // open choose package
@@ -196,13 +187,15 @@ namespace LaundryService
             float qty = 1.0f;
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
-            {   
+            {
                 // price
-                if(row.Cells[2].Value != null && row.Cells[3].Value != null && row.Cells[4].Value != null  )
+                double price = row.Cells[3].Value == null ? 0.0 : float.Parse(row.Cells[3].Value.ToString());
+                if (row.Cells[2].Value != null )
                 {
-                    if (row.Cells[4].Value.ToString() == "0")
+
+                    if (row.Cells[4].Value == null || row.Cells[4].Value.ToString() == "0")
                     {
-                        sumPrice += float.Parse(row.Cells[2].Value.ToString()) * float.Parse(row.Cells[3].Value.ToString());
+                        sumPrice += float.Parse(row.Cells[2].Value.ToString()) * price ;
                     }
                     
                 }
@@ -223,7 +216,7 @@ namespace LaundryService
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
+            updateBlance();
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -418,8 +411,6 @@ namespace LaundryService
                     }
                 }
             }
-            
-
 
             return valid;
         }
