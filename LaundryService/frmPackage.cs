@@ -91,6 +91,7 @@ namespace LaundryService
             if(Double.Parse(txtReceive.Text) < total || String.IsNullOrEmpty(txtReceive.Text))
             {
                 MessageBox.Show("Sorry, not enough money.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtReceive.Text = "";
             }
             else
             {

@@ -71,7 +71,7 @@ namespace LaundryService
                     sqlRead["PROMO_NAME"].ToString(),
                     sqlRead["BALANCE"].ToString()
                     );
-            }
+            } 
             conn.Close();
 
 

@@ -235,6 +235,7 @@ namespace LaundryService
             if (Double.Parse(txtReceive.Text) < Double.Parse(txtTotal.Text) || String.IsNullOrEmpty(txtReceive.Text))
             {
                 MessageBox.Show("Sorry, not enough money.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtReceive.Text = "";
             }
             else
             {
@@ -307,6 +308,13 @@ namespace LaundryService
                         if (cntSavedItem == cntItem)
                         {
                             MessageBox.Show("Save complete");
+                            dataGridView1.Rows.Clear();
+                            dataGridView1.Refresh();
+                            txtReceive.Text = "0";
+                            txtChange.Text = "";
+                            txtTotal.Text = "";
+
+
                         }
                         else
                         {
@@ -320,11 +328,6 @@ namespace LaundryService
 
             }
             
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private string generateOrderNo()
@@ -414,6 +417,15 @@ namespace LaundryService
 
             return valid;
         }
-        
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
